@@ -1,4 +1,4 @@
 package com.example.peopleandpassports.model;
 
-public class Menu {
+public class Passport {
 }

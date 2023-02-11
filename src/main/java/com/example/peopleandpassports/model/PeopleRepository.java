@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface PeopleRepository extends CrudRepository<People, Long> { // long = id lesz
+public interface PeopleRepository extends CrudRepository<People, Long> {
         @Query("""
             select p from People p
             where 

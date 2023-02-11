@@ -7,11 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PeopleAndPassportsApplication {
 
 
-
     public static void main(String[] args) {
 
         SpringApplication.run(PeopleAndPassportsApplication.class, args);
 
-        System.out.println("Balázs egy bajszos fijú");}
 
+    }
 }
+
+

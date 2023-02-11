@@ -3,26 +3,29 @@ package com.example.peopleandpassports.controller;
 import com.example.peopleandpassports.model.People;
 import com.example.peopleandpassports.model.PeopleRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class Controller implements PeopleRepository {
 
     private PeopleRepository peoplerepository;
 
+    public Controller(PeopleRepository peoplerepository) {
+        this.peoplerepository = peoplerepository;
+    }
 
-  //  private ContactRepository contactRepository;
 
-  //  public Controller(ContactRepository contactRepository) {
-   //     this.contactRepository = contactRepository;
-//    }
 
-   // @Transactional
- //   public Iterable<Contact> getAllContact() {
-   //     return contactRepository.findAll();
- //   }
+
+
+    @Transactional
+    public Iterable<People> getAllPeople() {
+       return peoplerepository.findAll();
+  }
 
 
 
@@ -90,6 +93,13 @@ public class Controller implements PeopleRepository {
     public void deleteAll() {
 
     }
+
+    @Transactional
+    public void addPeople (People people) {
+        peoplerepository.save(people);
+    }
+
+    // TODO: 2023. 02. 11. meghívni a menuben
 
     public List<People> searchPeople(Optional<String> searchText) {
         List<People> result = new LinkedList<>();

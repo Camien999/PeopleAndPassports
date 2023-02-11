@@ -1,2 +1,4 @@
-package com.example.peopleandpassports.controller;public class PeopleDao {
+package com.example.peopleandpassports.controller;
+
+public class PeopleDao {
 }

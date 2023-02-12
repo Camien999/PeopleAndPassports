@@ -15,18 +15,22 @@ public class Passport {
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    @JoinColumn(name = "id", referencedColumnName = "id")
     private People people;
 
     @Column(name = "pasport_number")
     private String pn;
 
+
+    @Temporal(TemporalType.DATE)
     @Column(name = "date_of_expiry")
     private LocalDate dateOfExpiry;
 
     @Column(columnDefinition = "nationality")
     private String nationality;
 
+
+    @Temporal(TemporalType.DATE)
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 

@@ -2,7 +2,9 @@ package com.example.peopleandpassports.model;
 
 import jakarta.persistence.*;
 
+
 import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "passport")
@@ -15,7 +17,7 @@ public class Passport {
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    @JoinColumn(name = "id", referencedColumnName = "id")
     private People people;
 
     @Column(name = "pasport_number")
@@ -24,34 +26,33 @@ public class Passport {
     @Column(name = "date_of_expiry")
     private LocalDate dateOfExpiry;
 
-    @Column(columnDefinition = "nationality")
     private String nationality;
 
     @Column(name = "date_of_birth")
+    @Temporal(TemporalType.DATE)
     private LocalDate dateOfBirth;
 
-    @Column(columnDefinition = "type('P')")
-    private char type;
+    @Column(name = "type('P')")
+    private String type;
 
-    @Column(columnDefinition = "ISO3166-1 alpha 2('__')")
+    @Column(name = "ISO3166-1 alpha 2('__')")
     private String code;
 
-    @Column(columnDefinition = "sex('M','F')")
-    private char sex;
+    @Column(name = "sex('M','F')")
+    private String sex;
 
     @Column(name = "place_of_brith")
     private String placeOfBrith;
 
-    // TODO: 2023 - collect each of the country's names and create EnumType, haha
-    private String authority;
+    private String authority; // TODO: 2023 - collect each of the country's names and create EnumType, haha
 
     @Column(name = "holders_signature")
-    private char holdersSignature;
+    private String holdersSignature;
 
     public Passport() {
     }
 
-    public Passport(People people, String pn, LocalDate dateOfExpiry, String nationality, LocalDate dateOfBirth, char type, String code, char sex, String placeOfBrith, String authority, char holdersSignature) {
+    public Passport(People people, String pn, LocalDate dateOfExpiry, String nationality, LocalDate dateOfBirth, String type, String code, String sex, String placeOfBrith, String authority, String holdersSignature) {
         this.people = people;
         this.pn = pn;
         this.dateOfExpiry = dateOfExpiry;
@@ -105,11 +106,11 @@ public class Passport {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public char getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(char type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -121,11 +122,11 @@ public class Passport {
         this.code = code;
     }
 
-    public char getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(char sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
@@ -145,11 +146,11 @@ public class Passport {
         this.authority = authority;
     }
 
-    public char getHoldersSignature() {
+    public String getHoldersSignature() {
         return holdersSignature;
     }
 
-    public void setHoldersSignature(char holdersSignature) {
+    public void setHoldersSignature(String holdersSignature) {
         this.holdersSignature = holdersSignature;
     }
 

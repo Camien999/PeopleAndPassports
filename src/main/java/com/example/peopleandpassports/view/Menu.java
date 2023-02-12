@@ -129,7 +129,7 @@ public class Menu {
     }
 
         private void searchPeople() {
-            System.out.println("\n\tWho are you looking for? ");
+            System.out.println("Who are you looking for? ");
             String text = sc.nextLine();
             Optional<String> st = Optional.empty();
             if (!text.isEmpty()) {

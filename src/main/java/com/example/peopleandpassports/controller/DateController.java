@@ -6,15 +6,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @RestController
 public class DateController {
+    private final PassportDao passportDao;
+
+    public DateController(PassportDao passportDao) {
+        this.passportDao = passportDao;
+    }
 
 
     @PostMapping("/local-date")
     public void localDate(@RequestParam("localDate")
-                          @DateTimeFormat(pattern = "yyyy-MMM-dd") LocalDate localDate) {
-        // ...
+                          @DateTimeFormat(pattern = "yyyy-MMM-dd") LocalDateTime localDateTime) {
     }
 }

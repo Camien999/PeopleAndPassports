@@ -1,8 +1,10 @@
 package com.example.peopleandpassports.model;
 
 import jakarta.persistence.*;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "passport")
@@ -24,15 +26,14 @@ public class Passport {
 
 
     @Column(name = "date_of_expiry")
-    private LocalDate dateOfExpiry;
+    private LocalDateTime dateOfExpiry;
 
     @Column(columnDefinition = "nationality")
     private String nationality;
 
 
-
     @Column(name = "date_of_birth")
-    private LocalDate dateOfBirth;
+    private LocalDateTime dateOfBirth;
 
     @Column(columnDefinition = "type('P')")
     private String type;
@@ -55,7 +56,7 @@ public class Passport {
     public Passport() {
     }
 
-    public Passport(People people, String pn, LocalDate dateOfExpiry, String nationality, LocalDate dateOfBirth, String type, String code, String sex, String placeOfBrith, String authority, String holdersSignature) {
+    public Passport(People people, String pn, LocalDateTime dateOfExpiry, String nationality, LocalDateTime dateOfBirth, String type, String code, String sex, String placeOfBrith, String authority, String holdersSignature) {
         this.people = people;
         this.pn = pn;
         this.dateOfExpiry = dateOfExpiry;
@@ -85,11 +86,11 @@ public class Passport {
         this.pn = pn;
     }
 
-    public LocalDate getDateOfExpiry() {
+    public LocalDateTime getDateOfExpiry() {
         return dateOfExpiry;
     }
 
-    public void setDateOfExpiry(LocalDate dateOfExpiry) {
+    public void setDateOfExpiry(LocalDateTime dateOfExpiry) {
         this.dateOfExpiry = dateOfExpiry;
     }
 
@@ -101,11 +102,11 @@ public class Passport {
         this.nationality = nationality;
     }
 
-    public LocalDate getDateOfBirth() {
+    public LocalDateTime getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
+    public void setDateOfBirth(LocalDateTime dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 
@@ -151,11 +152,11 @@ public class Menu {
         System.out.println("Passport number: ");
         passport.setPn(sc.nextLine());
         System.out.println("Date of expiry: ");
-        passport.setDateOfExpiry(LocalDate.parse(sc.nextLine()));
+        passport.setDateOfExpiry(LocalDateTime.parse(sc.nextLine()));
         System.out.println("Nationality: ");
         passport.setNationality(sc.nextLine());
         System.out.println("Date of birth: ");
-        passport.setDateOfBirth(LocalDate.parse(sc.nextLine()));
+        passport.setDateOfBirth(LocalDateTime.parse(sc.nextLine()));
         System.out.println("Type (P): ");
         passport.setType(sc.nextLine());
         System.out.println("ISO3166-1 alpha 2('__'): ");

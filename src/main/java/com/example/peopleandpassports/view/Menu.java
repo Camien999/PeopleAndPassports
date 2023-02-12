@@ -58,13 +58,15 @@ public class Menu {
             System.out.println("*" + StringUtils.center("P and P project", 32) + "*");
             System.out.println("*".repeat(34) + "\n");
             this.printMenu();
-            while (!(s = sc.nextLine()).equalsIgnoreCase("Q")) {
+            while (!(s = sc.nextLine()).equalsIgnoreCase("q")) {
                 switch (s.toLowerCase()) {
                     case "pe" -> addPeople();
                     //   case "s" -> searchContacts();
                     case "lpe" -> listContacts();
                     //   case "t" -> deleteContactByID();
                     case "pa" -> addPassport();
+                    case "lpa" -> listPassports();
+                    case "q" -> System.exit(0);
                     default -> System.out.println("-UNKNOWN OPTION-\n");
                 }
                 this.printMenu();
@@ -88,7 +90,7 @@ public class Menu {
     private void listContacts() {
         Iterable<People> allC = controller.getAllPeople();
 
-        listAllPeople(allC);
+        printPeople(allC);
     }
 
 
@@ -108,7 +110,7 @@ public class Menu {
 
          */
 
-    private static void listAllPeople(Iterable<People> allP) {
+    private static void printPeople(Iterable<People> allP) {
         int hasItems = 0;
         People first = null;
 
@@ -171,5 +173,27 @@ public class Menu {
         System.out.println("Holders signature: ");
         passport.setHoldersSignature(sc.nextLine());
         passportDao.addPassports(passport);
+    }
+    private void listPassports() {
+        Iterable<Passport> allPassports = passportDao.getAllPassports();
+
+        printPassports(allPassports);
+    }
+
+    private void printPassports(Iterable<Passport> allPassports) {
+        int hasItems = 0;
+
+        for (Passport passport : allPassports) {
+
+            System.out.println(passport);
+            System.out.println();
+
+            hasItems += 1;
+        }
+
+        if (hasItems == 0) {
+            System.out.println("* NO RECORDS");
+        }
+        System.out.println();
     }
 }

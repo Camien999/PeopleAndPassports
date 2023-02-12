@@ -29,9 +29,9 @@ public class Controller implements PeopleRepository {
 
 
 
-  //  public void removeContact(Long idx) {
-  //      contactRepository.deleteById(idx);
-  //  }
+    public void removePeopleById(Long id) {
+     peoplerepository.deleteById(id);
+    }
 
     @Override
     public <S extends People> S save(S entity) {

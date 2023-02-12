@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.InputMismatchException;
+import java.util.Optional;
 import java.util.Scanner;
 
 
@@ -61,9 +63,9 @@ public class Menu {
             while (!(s = sc.nextLine()).equalsIgnoreCase("q")) {
                 switch (s.toLowerCase()) {
                     case "pe" -> addPeople();
-                    //   case "s" -> searchContacts();
-                    case "lpe" -> listContacts();
-                    //   case "t" -> deleteContactByID();
+                    case "spe" -> searchPeople();
+                    case "lpe" -> listPeople();
+                    case "dpe" -> removePeopleById();
                     case "pa" -> addPassport();
                     case "lpa" -> listPassports();
                     case "q" -> System.exit(0);
@@ -81,34 +83,29 @@ public class Menu {
         p.setName(sc.nextLine());
         System.out.println("Date of birth: ");
         p.setDop(sc.nextLine());
-
-
         controller.addPeople(p);
     }
 
-    // TODO: 2023. 02. 11.
-    private void listContacts() {
+    private void listPeople() {
         Iterable<People> allC = controller.getAllPeople();
 
         printPeople(allC);
     }
 
 
-    // TODO: 2023. 02. 11.
-        /*
-        private void deleteContactByID() {
-            System.out.println("Melyik kapcsolatot szeretned torolni, mi az azonositoja: ");
-            Long id;
-            try {
-                id = sc.nextLong();
-            } catch (InputMismatchException e) {
-                System.out.println("Nem megfelelo azonositot adtal meg");
-                return;
-            }
-            controller.deleteById(id);
-        }
 
-         */
+    private void removePeopleById() {
+        System.out.println("Type in the Id of the person that you would like to remove: ");
+        Long id;
+        try {
+            id = sc.nextLong();
+        } catch (InputMismatchException e) {
+            System.out.println("There is no matching Id with yours!");
+            return;
+        }
+        controller.removePeopleById(id); // here was a generated deleteById method
+    }
+
 
     private static void printPeople(Iterable<People> allP) {
         int hasItems = 0;
@@ -128,26 +125,20 @@ public class Menu {
         if (hasItems == 0) {
             System.out.println("* NO RECORDS");
         }
-//        if (hasItems == 1) {
-//            printModifyMenu(first);
-//        }
         System.out.println();
     }
 
-    // TODO: 2023. 02. 11. write the searchPeople method
-      /*
-        private void searchContacts() {
-            System.out.println("\n\tMit keresunk? ");
+        private void searchPeople() {
+            System.out.println("\n\tWho are you looking for? ");
             String text = sc.nextLine();
             Optional<String> st = Optional.empty();
             if (!text.isEmpty()) {
                 st = Optional.of(text);
             }
 
-            printContacts(controller.searchPeople(st));
+            printPeople(controller.searchPeople(st));
         }
 
-       */
     private void addPassport() {
         Passport passport = new Passport();
         System.out.println("\n\t Add a new passport: ");
@@ -174,6 +165,7 @@ public class Menu {
         passport.setHoldersSignature(sc.nextLine());
         passportDao.addPassports(passport);
     }
+
     private void listPassports() {
         Iterable<Passport> allPassports = passportDao.getAllPassports();
 

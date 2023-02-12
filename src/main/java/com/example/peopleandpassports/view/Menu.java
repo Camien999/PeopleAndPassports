@@ -152,11 +152,11 @@ public class Menu {
         System.out.println("Passport number: ");
         passport.setPn(sc.nextLine());
         System.out.println("Date of expiry: ");
-        passport.setDateOfExpiry(LocalDateTime.parse(sc.nextLine()));
+        passport.setDateOfExpiry(LocalDate.parse(sc.nextLine()));
         System.out.println("Nationality: ");
         passport.setNationality(sc.nextLine());
         System.out.println("Date of birth: ");
-        passport.setDateOfBirth(LocalDateTime.parse(sc.nextLine()));
+        passport.setDateOfBirth(LocalDate.parse(sc.nextLine()));
         System.out.println("Type (P): ");
         passport.setType(sc.nextLine());
         System.out.println("ISO3166-1 alpha 2('__'): ");

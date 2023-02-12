@@ -1,10 +1,10 @@
 package com.example.peopleandpassports.model;
 
 import jakarta.persistence.*;
-import org.springframework.web.bind.annotation.PostMapping;
 
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "passport")
@@ -23,32 +23,28 @@ public class Passport {
     @Column(name = "pasport_number")
     private String pn;
 
-
-
     @Column(name = "date_of_expiry")
-    private LocalDateTime dateOfExpiry;
+    private LocalDate dateOfExpiry;
 
-    @Column(columnDefinition = "nationality")
     private String nationality;
 
-
     @Column(name = "date_of_birth")
-    private LocalDateTime dateOfBirth;
+    @Temporal(TemporalType.DATE)
+    private LocalDate dateOfBirth;
 
-    @Column(columnDefinition = "type('P')")
+    @Column(name = "type('P')")
     private String type;
 
-    @Column(columnDefinition = "ISO3166-1 alpha 2('__')")
+    @Column(name = "ISO3166-1 alpha 2('__')")
     private String code;
 
-    @Column(columnDefinition = "sex('M','F')")
+    @Column(name = "sex('M','F')")
     private String sex;
 
     @Column(name = "place_of_brith")
     private String placeOfBrith;
 
-    // TODO: 2023 - collect each of the country's names and create EnumType, haha
-    private String authority;
+    private String authority; // TODO: 2023 - collect each of the country's names and create EnumType, haha
 
     @Column(name = "holders_signature")
     private String holdersSignature;
@@ -56,7 +52,7 @@ public class Passport {
     public Passport() {
     }
 
-    public Passport(People people, String pn, LocalDateTime dateOfExpiry, String nationality, LocalDateTime dateOfBirth, String type, String code, String sex, String placeOfBrith, String authority, String holdersSignature) {
+    public Passport(People people, String pn, LocalDate dateOfExpiry, String nationality, LocalDate dateOfBirth, String type, String code, String sex, String placeOfBrith, String authority, String holdersSignature) {
         this.people = people;
         this.pn = pn;
         this.dateOfExpiry = dateOfExpiry;
@@ -86,11 +82,11 @@ public class Passport {
         this.pn = pn;
     }
 
-    public LocalDateTime getDateOfExpiry() {
+    public LocalDate getDateOfExpiry() {
         return dateOfExpiry;
     }
 
-    public void setDateOfExpiry(LocalDateTime dateOfExpiry) {
+    public void setDateOfExpiry(LocalDate dateOfExpiry) {
         this.dateOfExpiry = dateOfExpiry;
     }
 
@@ -102,11 +98,11 @@ public class Passport {
         this.nationality = nationality;
     }
 
-    public LocalDateTime getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDateTime dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

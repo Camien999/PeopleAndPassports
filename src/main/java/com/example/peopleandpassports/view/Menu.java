@@ -88,7 +88,7 @@ public class Menu {
     private void listContacts() {
         Iterable<People> allC = controller.getAllPeople();
 
-        printPeople(allC);
+        listAllPeople(allC);
     }
 
 
@@ -108,7 +108,7 @@ public class Menu {
 
          */
 
-    private static void printPeople(Iterable<People> allP) {
+    private static void listAllPeople(Iterable<People> allP) {
         int hasItems = 0;
         People first = null;
 
@@ -124,7 +124,7 @@ public class Menu {
         }
 
         if (hasItems == 0) {
-            System.out.println("** There is no any person yet.");
+            System.out.println("* NO RECORDS");
         }
 //        if (hasItems == 1) {
 //            printModifyMenu(first);
@@ -156,7 +156,8 @@ public class Menu {
         System.out.println("Nationality: ");
         passport.setNationality(sc.nextLine());
         System.out.println("Date of birth: ");
-        passport.setDateOfBirth(LocalDate.parse(sc.nextLine()));
+        passport.setDateOfBirth(LocalDate
+                .parse(sc.nextLine()));
         System.out.println("Type (P): ");
         passport.setType(sc.nextLine());
         System.out.println("ISO3166-1 alpha 2('__'): ");

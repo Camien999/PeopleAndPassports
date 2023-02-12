@@ -22,7 +22,7 @@ public class Passport {
     private String pn;
 
 
-    @Temporal(TemporalType.DATE)
+
     @Column(name = "date_of_expiry")
     private LocalDate dateOfExpiry;
 
@@ -30,18 +30,18 @@ public class Passport {
     private String nationality;
 
 
-    @Temporal(TemporalType.DATE)
+
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
     @Column(columnDefinition = "type('P')")
-    private char type;
+    private String type;
 
     @Column(columnDefinition = "ISO3166-1 alpha 2('__')")
     private String code;
 
     @Column(columnDefinition = "sex('M','F')")
-    private char sex;
+    private String sex;
 
     @Column(name = "place_of_brith")
     private String placeOfBrith;
@@ -50,12 +50,12 @@ public class Passport {
     private String authority;
 
     @Column(name = "holders_signature")
-    private char holdersSignature;
+    private String holdersSignature;
 
     public Passport() {
     }
 
-    public Passport(People people, String pn, LocalDate dateOfExpiry, String nationality, LocalDate dateOfBirth, char type, String code, char sex, String placeOfBrith, String authority, char holdersSignature) {
+    public Passport(People people, String pn, LocalDate dateOfExpiry, String nationality, LocalDate dateOfBirth, String type, String code, String sex, String placeOfBrith, String authority, String holdersSignature) {
         this.people = people;
         this.pn = pn;
         this.dateOfExpiry = dateOfExpiry;
@@ -109,11 +109,11 @@ public class Passport {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public char getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(char type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -125,11 +125,11 @@ public class Passport {
         this.code = code;
     }
 
-    public char getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(char sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
@@ -149,11 +149,11 @@ public class Passport {
         this.authority = authority;
     }
 
-    public char getHoldersSignature() {
+    public String getHoldersSignature() {
         return holdersSignature;
     }
 
-    public void setHoldersSignature(char holdersSignature) {
+    public void setHoldersSignature(String holdersSignature) {
         this.holdersSignature = holdersSignature;
     }
 

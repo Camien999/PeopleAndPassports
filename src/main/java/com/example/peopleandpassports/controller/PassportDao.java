@@ -5,12 +5,15 @@ import com.example.peopleandpassports.model.PassportRepository;
 import com.example.peopleandpassports.model.People;
 import com.example.peopleandpassports.model.PeopleRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+
+@Service
 public class PassportDao implements PassportRepository {
 
     private PassportRepository passportRepository;
@@ -22,6 +25,7 @@ public class PassportDao implements PassportRepository {
     public void addPassports (Passport passport) {
         passportRepository.save(passport);
     }
+
     @Transactional
     public Iterable<Passport> getAllPassports() {
         return passportRepository.findAll();
